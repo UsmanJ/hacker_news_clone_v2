@@ -1,19 +1,19 @@
-describe('itunes search api application', function() {
-
-  var searchBox = element(by.css('.input'));
-  var searchBtn = element(by.css('#searchBtn'));
+describe('hacker news clone homepage', function() {
 
   beforeEach(function() {
     browser.get('http://localhost:9000/#/');
   })
 
   it('has a title', function() {
-    expect(browser.getTitle()).toEqual('itunesSearchApiApp');
+    expect(browser.getTitle()).toEqual('Hacker News');
   });
 
-  it('displays the results once the query is run', function() {
-    searchBox.sendKeys('Adele');
-    searchBtn.click();
-    expect(element(by.className('results')).isDisplayed()).toBeTruthy();
+  it('displays the top stories', function() {
+    expect(element(by.className('list-group')).isDisplayed()).toBeTruthy();
   });
+
+  it('displays 30 of the top stories', function() {
+    expect(element.all(by.repeater('story in main.stories')).count()).toEqual(30)
+  });
+
 });
