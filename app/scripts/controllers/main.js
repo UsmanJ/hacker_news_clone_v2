@@ -31,7 +31,6 @@ angular.module('hackerNewsCloneApp')
         .then(function(response) {
           self.stories.push(response.data);
           self.loaded = true;
-          console.log(response)
         });
       }
     };
